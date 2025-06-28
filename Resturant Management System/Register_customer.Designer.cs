@@ -34,7 +34,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.dob = new System.Windows.Forms.DateTimePicker();
+            this.dtpDOB = new System.Windows.Forms.DateTimePicker();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.txtName = new System.Windows.Forms.TextBox();
@@ -48,6 +48,7 @@
             this.label9 = new System.Windows.Forms.Label();
             this.txtAddress = new System.Windows.Forms.TextBox();
             this.btnSave = new System.Windows.Forms.Button();
+            this.btnShowHide = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -111,13 +112,13 @@
             this.label6.TabIndex = 7;
             this.label6.Text = "Date of Birth :";
             // 
-            // dob
+            // dtpDOB
             // 
-            this.dob.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dob.Location = new System.Drawing.Point(447, 203);
-            this.dob.Name = "dob";
-            this.dob.Size = new System.Drawing.Size(330, 27);
-            this.dob.TabIndex = 8;
+            this.dtpDOB.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpDOB.Location = new System.Drawing.Point(447, 203);
+            this.dtpDOB.Name = "dtpDOB";
+            this.dtpDOB.Size = new System.Drawing.Size(330, 27);
+            this.dtpDOB.TabIndex = 8;
             // 
             // label7
             // 
@@ -240,11 +241,23 @@
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // Register
+            // btnShowHide
+            // 
+            this.btnShowHide.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnShowHide.Location = new System.Drawing.Point(802, 392);
+            this.btnShowHide.Name = "btnShowHide";
+            this.btnShowHide.Size = new System.Drawing.Size(64, 48);
+            this.btnShowHide.TabIndex = 20;
+            this.btnShowHide.Text = "Show/Hide";
+            this.btnShowHide.UseVisualStyleBackColor = true;
+            this.btnShowHide.Click += new System.EventHandler(this.btnShowHide_Click);
+            // 
+            // Register_customer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1182, 653);
+            this.Controls.Add(this.btnShowHide);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.txtAddress);
             this.Controls.Add(this.label9);
@@ -256,14 +269,14 @@
             this.Controls.Add(this.txtName);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.dob);
+            this.Controls.Add(this.dtpDOB);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.panel1);
-            this.Name = "Register";
+            this.Name = "Register_customer";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Register";
             this.panel1.ResumeLayout(false);
@@ -280,7 +293,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.DateTimePicker dob;
+        private System.Windows.Forms.DateTimePicker dtpDOB;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtName;
@@ -294,5 +307,6 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txtAddress;
         private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Button btnShowHide;
     }
 }
