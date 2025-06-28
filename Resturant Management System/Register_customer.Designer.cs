@@ -1,6 +1,6 @@
 ﻿namespace Resturant_Management_System
 {
-    partial class Register
+    partial class Register_customer
     {
         /// <summary>
         /// Required designer variable.
@@ -222,7 +222,7 @@
             // 
             // txtAddress
             // 
-            this.txtAddress.Location = new System.Drawing.Point(447, 266);
+            this.txtAddress.Location = new System.Drawing.Point(447, 264);
             this.txtAddress.Multiline = true;
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.Size = new System.Drawing.Size(330, 90);

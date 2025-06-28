@@ -1,6 +1,6 @@
 ﻿namespace Resturant_Management_System
 {
-    partial class Login
+    partial class Login_Cstomer
     {
         /// <summary>
         /// Required designer variable.

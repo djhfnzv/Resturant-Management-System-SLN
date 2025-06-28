@@ -21,14 +21,14 @@ namespace Resturant_Management_System
         private void btnRegister_Click(object sender, EventArgs e)
         {
             this.Hide(); // hides the current form
-            Register h = new Register();
+            Register_customer h = new Register_customer();
             h.Show();
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
             this.Hide(); // hides the current form
-            Login h = new Login();
+            Login_Cstomer h = new Login_Cstomer();
             h.Show();
         }
     }
