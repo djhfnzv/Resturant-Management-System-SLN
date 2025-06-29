@@ -31,20 +31,25 @@ namespace Resturant_Management_System
         private void staffToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
-            tabControl1.SelectedTab = tabStaff; // 👈 this hides the panel
+            tabRecomonded.SelectedTab = tabStaff; // 👈 this hides the panel
             table = "Staff";
         }
 
         private void menuToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            tabControl1.SelectedTab = tabMenu;
+            tabRecomonded.SelectedTab = tabMenu;
             table = "Menu";
         }
 
         private void managersToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            tabControl1.SelectedTab = tabManager; 
+            tabRecomonded.SelectedTab = tabManager; 
             table = "Manager";
+        }
+        private void recomondationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            tabRecomonded.SelectedTab = tabRecomondation;
+            table = "Recommended";
         }
 
         private void Hide(bool x)
@@ -136,6 +141,10 @@ namespace Resturant_Management_System
                 txtMdob.Text = row.Cells["dob"].Value?.ToString();
                 txtMrole.Text = row.Cells["role"].Value?.ToString();
                 txtMpassword.Text = row.Cells["password"].Value?.ToString();
+            }
+            else if (table == "Manager") 
+            {
+                txtRname;
             }
         }
 

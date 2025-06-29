@@ -7,35 +7,51 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 
 namespace Resturant_Management_System
 {
-    public partial class Customer_View_Menu: Form
+    public partial class Customer_View_Menu : Form
     {
+
         public Customer_View_Menu()
         {
             InitializeComponent();
+
+
         }
-        
+
         private void dgvTable_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
 
 
+
         public string price;
+        private string cmbOrderType;
+        private ComboBox cmbPaymentMethod;
+
         private void dgvTable_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
             {
-                txtItemID.Text = dgvTable.Rows[e.RowIndex].Cells[0].Value.ToString();
-                txtItemName.Text = dgvTable.Rows[e.RowIndex].Cells[1].Value.ToString();
+                var row = dgvTable.Rows[e.RowIndex];
+                txtItemID.Text = row.Cells["item_id"].Value?.ToString();      // Use actual column name
+                txtItemName.Text = row.Cells["item_name"].Value?.ToString();  // Use actual column name
             }
         }
 
         private void btnLoad_Click(object sender, EventArgs e)
         {
-            var query = $"select * from Menu";
+            var query = @"
+                        SELECT 
+                            item_id AS [Item ID],
+                            category AS [Item Category],
+                            item_name AS [Item Name],
+                            price AS [Item Price]
+                        FROM Menu";
+
             var data = DataAccess.GetData(query);
             if (data == null)
                 return;
@@ -60,11 +76,11 @@ namespace Resturant_Management_System
                 var itemName = txtItemName.Text;
                 var quantity = Convert.ToInt32(txtQuantity.Text);
 
-                // get price from Menu
+                // get price from Menu (correct column name!)
                 var priceQuery = $"SELECT price FROM Menu WHERE item_id = '{itemID}'";
                 var priceData = DataAccess.GetData(priceQuery);
 
-                if (priceData.Rows.Count == 0)
+                if (priceData == null || priceData.Rows.Count == 0)
                 {
                     MessageBox.Show("Item not found in Menu.");
                     return;
@@ -72,15 +88,18 @@ namespace Resturant_Management_System
 
                 var price = Convert.ToDecimal(priceData.Rows[0]["price"]);
 
+                // default customer name
+                var customerName = "Mr/Ms Anonymous";
+
                 // insert into cart
                 var query = $@"
             INSERT INTO Cart (item_id, item_name, quantity, price, customer_name)
-            VALUES ('{itemID}', '{itemName}', {quantity}, {price})
+            VALUES ('{itemID}', '{itemName}', {quantity}, {price}, '{customerName}')
         ";
 
                 var result = DataAccess.ExecuteQuery(query);
 
-                if (result > 0)
+                if (result == true)
                 {
                     MessageBox.Show("Item added to cart!");
                 }
@@ -97,12 +116,61 @@ namespace Resturant_Management_System
 
         private void btnOrder_Click(object sender, EventArgs e)
         {
+            try
+            {
+                // Ensure cmbOrderType and cmbPaymentMethod are ComboBox objects
+                if (cmbService is ComboBox orderTypeComboBox && cmbPayment is ComboBox paymentMethodComboBox)
+                {
+                    string orderType = orderTypeComboBox.SelectedItem?.ToString() ?? "Dine-in";
+                    string paymentMethod = paymentMethodComboBox.SelectedItem?.ToString() ?? "Cash";
 
-        }
+                    var cartQuery = "SELECT * FROM Cart";
+                    var cartData = DataAccess.GetData(cartQuery);
 
-        private void button1_Click(object sender, EventArgs e)
-        {
+                    if (cartData == null || cartData.Rows.Count == 0)
+                    {
+                        MessageBox.Show("Cart is empty!");
+                        return;
+                    }
 
+                    int insertedRows = 0;
+
+                    foreach (DataRow row in cartData.Rows)
+                    {
+                        var itemID = row["item_id"].ToString();
+                        var quantity = Convert.ToInt32(row["quantity"]);
+                        var customerName = row["customer_name"].ToString();
+                        var itemName = row["item_name"].ToString();
+
+                        var insertQuery = $@"
+                        INSERT INTO Orders (item_id, quantity, customer_name, order_type, payment_method, item_name)
+                        VALUES ('{itemID}', {quantity}, '{customerName}', '{orderType}', '{paymentMethod}', '{itemName}')
+                    ";
+
+                        var result = DataAccess.ExecuteQuery(insertQuery);
+
+                        if (result == true)
+                        {
+                            insertedRows++;
+                        }
+                    }
+
+                    // clear the cart
+                    var clearQuery = "DELETE FROM Cart";
+                    DataAccess.ExecuteQuery(clearQuery);
+
+                    MessageBox.Show($"{insertedRows} order(s) placed successfully!");
+                }
+                else
+                {
+                    MessageBox.Show("Order type or payment method selection is invalid.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
         }
     }
 }
+

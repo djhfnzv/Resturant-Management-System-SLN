@@ -42,10 +42,10 @@
             this.staffToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.managersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.applicantsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.recomondationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.orderSummeryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lossProfitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabRecomonded = new System.Windows.Forms.TabControl();
             this.tabStaff = new System.Windows.Forms.TabPage();
             this.pnlStaff = new System.Windows.Forms.Panel();
             this.txtSalary = new System.Windows.Forms.TextBox();
@@ -96,6 +96,8 @@
             this.label26 = new System.Windows.Forms.Label();
             this.tabMenu = new System.Windows.Forms.TabPage();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label27 = new System.Windows.Forms.Label();
             this.txtPrice = new System.Windows.Forms.TextBox();
             this.txtIname = new System.Windows.Forms.TextBox();
             this.txtFCatagory = new System.Windows.Forms.TextBox();
@@ -106,21 +108,44 @@
             this.label20 = new System.Windows.Forms.Label();
             this.tabRecomondation = new System.Windows.Forms.TabPage();
             this.tabOrder = new System.Windows.Forms.TabPage();
-            this.label27 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.rtxtAddress = new System.Windows.Forms.RichTextBox();
+            this.txtReducation = new System.Windows.Forms.TextBox();
+            this.txtRage = new System.Windows.Forms.TextBox();
+            this.txtRecommendationDate = new System.Windows.Forms.TextBox();
+            this.txtRecommendedBy = new System.Windows.Forms.TextBox();
+            this.txtApplicationDate = new System.Windows.Forms.TextBox();
+            this.txtAppliedCatagory = new System.Windows.Forms.TextBox();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.txtRname = new System.Windows.Forms.TextBox();
+            this.label28 = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
+            this.label30 = new System.Windows.Forms.Label();
+            this.label31 = new System.Windows.Forms.Label();
+            this.label32 = new System.Windows.Forms.Label();
+            this.label33 = new System.Windows.Forms.Label();
+            this.label34 = new System.Windows.Forms.Label();
+            this.label35 = new System.Windows.Forms.Label();
+            this.label36 = new System.Windows.Forms.Label();
+            this.label37 = new System.Windows.Forms.Label();
+            this.label38 = new System.Windows.Forms.Label();
+            this.label39 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTable)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
-            this.tabControl1.SuspendLayout();
+            this.tabRecomonded.SuspendLayout();
             this.tabStaff.SuspendLayout();
             this.pnlStaff.SuspendLayout();
             this.tabManager.SuspendLayout();
             this.panel4.SuspendLayout();
             this.tabMenu.SuspendLayout();
             this.panel5.SuspendLayout();
+            this.tabRecomondation.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -131,7 +156,7 @@
             this.tableLayoutPanel1.Controls.Add(this.panel3, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.panel2, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.tabControl1, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.tabRecomonded, 1, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -253,7 +278,7 @@
             this.staffToolStripMenuItem,
             this.managersToolStripMenuItem,
             this.menuToolStripMenuItem,
-            this.applicantsToolStripMenuItem,
+            this.recomondationToolStripMenuItem,
             this.orderSummeryToolStripMenuItem,
             this.lossProfitToolStripMenuItem});
             this.filesToolStripMenuItem.Name = "filesToolStripMenuItem";
@@ -264,7 +289,7 @@
             // 
             this.staffToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
             this.staffToolStripMenuItem.Name = "staffToolStripMenuItem";
-            this.staffToolStripMenuItem.Size = new System.Drawing.Size(204, 26);
+            this.staffToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.staffToolStripMenuItem.Text = "Staff";
             this.staffToolStripMenuItem.Click += new System.EventHandler(this.staffToolStripMenuItem_Click);
             // 
@@ -272,7 +297,7 @@
             // 
             this.managersToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.managersToolStripMenuItem.Name = "managersToolStripMenuItem";
-            this.managersToolStripMenuItem.Size = new System.Drawing.Size(204, 26);
+            this.managersToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.managersToolStripMenuItem.Text = "Managers";
             this.managersToolStripMenuItem.Click += new System.EventHandler(this.managersToolStripMenuItem_Click);
             // 
@@ -280,41 +305,42 @@
             // 
             this.menuToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.menuToolStripMenuItem.Name = "menuToolStripMenuItem";
-            this.menuToolStripMenuItem.Size = new System.Drawing.Size(204, 26);
+            this.menuToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.menuToolStripMenuItem.Text = "Menu";
             this.menuToolStripMenuItem.Click += new System.EventHandler(this.menuToolStripMenuItem_Click);
             // 
-            // applicantsToolStripMenuItem
+            // recomondationToolStripMenuItem
             // 
-            this.applicantsToolStripMenuItem.Name = "applicantsToolStripMenuItem";
-            this.applicantsToolStripMenuItem.Size = new System.Drawing.Size(204, 26);
-            this.applicantsToolStripMenuItem.Text = "Recomondations";
+            this.recomondationToolStripMenuItem.Name = "recomondationToolStripMenuItem";
+            this.recomondationToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.recomondationToolStripMenuItem.Text = "Recomondations";
+            this.recomondationToolStripMenuItem.Click += new System.EventHandler(this.recomondationToolStripMenuItem_Click);
             // 
             // orderSummeryToolStripMenuItem
             // 
             this.orderSummeryToolStripMenuItem.Name = "orderSummeryToolStripMenuItem";
-            this.orderSummeryToolStripMenuItem.Size = new System.Drawing.Size(204, 26);
+            this.orderSummeryToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.orderSummeryToolStripMenuItem.Text = "Order Summery";
             // 
             // lossProfitToolStripMenuItem
             // 
             this.lossProfitToolStripMenuItem.Name = "lossProfitToolStripMenuItem";
-            this.lossProfitToolStripMenuItem.Size = new System.Drawing.Size(204, 26);
+            this.lossProfitToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.lossProfitToolStripMenuItem.Text = "Loss / Profit";
             // 
-            // tabControl1
+            // tabRecomonded
             // 
-            this.tabControl1.Controls.Add(this.tabStaff);
-            this.tabControl1.Controls.Add(this.tabManager);
-            this.tabControl1.Controls.Add(this.tabMenu);
-            this.tabControl1.Controls.Add(this.tabRecomondation);
-            this.tabControl1.Controls.Add(this.tabOrder);
-            this.tabControl1.Location = new System.Drawing.Point(827, 40);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(352, 610);
-            this.tabControl1.TabIndex = 3;
-            this.tabControl1.TabIndexChanged += new System.EventHandler(this.staffToolStripMenuItem_Click);
+            this.tabRecomonded.Controls.Add(this.tabStaff);
+            this.tabRecomonded.Controls.Add(this.tabManager);
+            this.tabRecomonded.Controls.Add(this.tabMenu);
+            this.tabRecomonded.Controls.Add(this.tabRecomondation);
+            this.tabRecomonded.Controls.Add(this.tabOrder);
+            this.tabRecomonded.Location = new System.Drawing.Point(827, 40);
+            this.tabRecomonded.Name = "tabRecomonded";
+            this.tabRecomonded.SelectedIndex = 0;
+            this.tabRecomonded.Size = new System.Drawing.Size(352, 610);
+            this.tabRecomonded.TabIndex = 3;
+            this.tabRecomonded.TabIndexChanged += new System.EventHandler(this.recomondationToolStripMenuItem_Click);
             // 
             // tabStaff
             // 
@@ -832,6 +858,24 @@
             this.panel5.Size = new System.Drawing.Size(344, 581);
             this.panel5.TabIndex = 45;
             // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(118, 210);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(205, 22);
+            this.textBox1.TabIndex = 44;
+            this.textBox1.UseWaitCursor = true;
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label27.Location = new System.Drawing.Point(13, 213);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(99, 19);
+            this.label27.TabIndex = 43;
+            this.label27.Text = "Item Name :";
+            // 
             // txtPrice
             // 
             this.txtPrice.Location = new System.Drawing.Point(117, 322);
@@ -906,6 +950,30 @@
             // 
             // tabRecomondation
             // 
+            this.tabRecomondation.Controls.Add(this.rtxtAddress);
+            this.tabRecomondation.Controls.Add(this.txtReducation);
+            this.tabRecomondation.Controls.Add(this.txtRage);
+            this.tabRecomondation.Controls.Add(this.txtRecommendationDate);
+            this.tabRecomondation.Controls.Add(this.txtRecommendedBy);
+            this.tabRecomondation.Controls.Add(this.txtApplicationDate);
+            this.tabRecomondation.Controls.Add(this.txtAppliedCatagory);
+            this.tabRecomondation.Controls.Add(this.textBox4);
+            this.tabRecomondation.Controls.Add(this.textBox5);
+            this.tabRecomondation.Controls.Add(this.textBox6);
+            this.tabRecomondation.Controls.Add(this.textBox7);
+            this.tabRecomondation.Controls.Add(this.txtRname);
+            this.tabRecomondation.Controls.Add(this.label28);
+            this.tabRecomondation.Controls.Add(this.label29);
+            this.tabRecomondation.Controls.Add(this.label30);
+            this.tabRecomondation.Controls.Add(this.label31);
+            this.tabRecomondation.Controls.Add(this.label32);
+            this.tabRecomondation.Controls.Add(this.label33);
+            this.tabRecomondation.Controls.Add(this.label34);
+            this.tabRecomondation.Controls.Add(this.label35);
+            this.tabRecomondation.Controls.Add(this.label36);
+            this.tabRecomondation.Controls.Add(this.label37);
+            this.tabRecomondation.Controls.Add(this.label38);
+            this.tabRecomondation.Controls.Add(this.label39);
             this.tabRecomondation.Location = new System.Drawing.Point(4, 25);
             this.tabRecomondation.Name = "tabRecomondation";
             this.tabRecomondation.Size = new System.Drawing.Size(344, 581);
@@ -922,23 +990,210 @@
             this.tabOrder.Text = "Order";
             this.tabOrder.UseVisualStyleBackColor = true;
             // 
-            // label27
+            // rtxtAddress
             // 
-            this.label27.AutoSize = true;
-            this.label27.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label27.Location = new System.Drawing.Point(13, 213);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(99, 19);
-            this.label27.TabIndex = 43;
-            this.label27.Text = "Item Name :";
+            this.rtxtAddress.Location = new System.Drawing.Point(155, 152);
+            this.rtxtAddress.Name = "rtxtAddress";
+            this.rtxtAddress.Size = new System.Drawing.Size(184, 50);
+            this.rtxtAddress.TabIndex = 26;
+            this.rtxtAddress.Text = "";
             // 
-            // textBox1
+            // txtReducation
             // 
-            this.textBox1.Location = new System.Drawing.Point(118, 210);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(205, 22);
-            this.textBox1.TabIndex = 44;
-            this.textBox1.UseWaitCursor = true;
+            this.txtReducation.Location = new System.Drawing.Point(155, 120);
+            this.txtReducation.Name = "txtReducation";
+            this.txtReducation.Size = new System.Drawing.Size(184, 22);
+            this.txtReducation.TabIndex = 24;
+            // 
+            // txtRage
+            // 
+            this.txtRage.Location = new System.Drawing.Point(155, 87);
+            this.txtRage.Name = "txtRage";
+            this.txtRage.Size = new System.Drawing.Size(184, 22);
+            this.txtRage.TabIndex = 23;
+            // 
+            // txtRecommendationDate
+            // 
+            this.txtRecommendationDate.Location = new System.Drawing.Point(155, 439);
+            this.txtRecommendationDate.Name = "txtRecommendationDate";
+            this.txtRecommendationDate.Size = new System.Drawing.Size(184, 22);
+            this.txtRecommendationDate.TabIndex = 22;
+            // 
+            // txtRecommendedBy
+            // 
+            this.txtRecommendedBy.Location = new System.Drawing.Point(155, 383);
+            this.txtRecommendedBy.Name = "txtRecommendedBy";
+            this.txtRecommendedBy.Size = new System.Drawing.Size(184, 22);
+            this.txtRecommendedBy.TabIndex = 21;
+            // 
+            // txtApplicationDate
+            // 
+            this.txtApplicationDate.Location = new System.Drawing.Point(155, 346);
+            this.txtApplicationDate.Name = "txtApplicationDate";
+            this.txtApplicationDate.Size = new System.Drawing.Size(184, 22);
+            this.txtApplicationDate.TabIndex = 20;
+            // 
+            // txtAppliedCatagory
+            // 
+            this.txtAppliedCatagory.Location = new System.Drawing.Point(155, 312);
+            this.txtAppliedCatagory.Name = "txtAppliedCatagory";
+            this.txtAppliedCatagory.Size = new System.Drawing.Size(184, 22);
+            this.txtAppliedCatagory.TabIndex = 19;
+            // 
+            // textBox4
+            // 
+            this.textBox4.Location = new System.Drawing.Point(155, 277);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(184, 22);
+            this.textBox4.TabIndex = 18;
+            // 
+            // textBox5
+            // 
+            this.textBox5.Location = new System.Drawing.Point(155, 247);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(184, 22);
+            this.textBox5.TabIndex = 17;
+            // 
+            // textBox6
+            // 
+            this.textBox6.Location = new System.Drawing.Point(155, 247);
+            this.textBox6.Name = "textBox6";
+            this.textBox6.Size = new System.Drawing.Size(184, 22);
+            this.textBox6.TabIndex = 16;
+            // 
+            // textBox7
+            // 
+            this.textBox7.Location = new System.Drawing.Point(155, 211);
+            this.textBox7.Name = "textBox7";
+            this.textBox7.Size = new System.Drawing.Size(184, 22);
+            this.textBox7.TabIndex = 25;
+            // 
+            // txtRname
+            // 
+            this.txtRname.Location = new System.Drawing.Point(155, 57);
+            this.txtRname.Name = "txtRname";
+            this.txtRname.Size = new System.Drawing.Size(184, 22);
+            this.txtRname.TabIndex = 15;
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label28.Location = new System.Drawing.Point(5, 417);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(182, 19);
+            this.label28.TabIndex = 13;
+            this.label28.Text = "Recommendation Date:";
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label29.Location = new System.Drawing.Point(5, 383);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(147, 19);
+            this.label29.TabIndex = 12;
+            this.label29.Text = "Recommended By:";
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label30.Location = new System.Drawing.Point(12, 346);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(140, 19);
+            this.label30.TabIndex = 11;
+            this.label30.Text = "Application Date:";
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label31.Location = new System.Drawing.Point(7, 312);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(145, 19);
+            this.label31.TabIndex = 10;
+            this.label31.Text = "Applied Catagory:";
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label32.Location = new System.Drawing.Point(95, 277);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(52, 19);
+            this.label32.TabIndex = 9;
+            this.label32.Text = "DOB:";
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label33.Location = new System.Drawing.Point(95, 277);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(52, 19);
+            this.label33.TabIndex = 8;
+            this.label33.Text = "DOB:";
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label34.Location = new System.Drawing.Point(91, 247);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(61, 19);
+            this.label34.TabIndex = 7;
+            this.label34.Text = "Phone:";
+            // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label35.Location = new System.Drawing.Point(86, 211);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(66, 19);
+            this.label35.TabIndex = 6;
+            this.label35.Text = "E-mail:";
+            // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label36.Location = new System.Drawing.Point(78, 152);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(74, 19);
+            this.label36.TabIndex = 5;
+            this.label36.Text = "Address:";
+            // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label37.Location = new System.Drawing.Point(62, 121);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(90, 19);
+            this.label37.TabIndex = 4;
+            this.label37.Text = "Education:";
+            // 
+            // label38
+            // 
+            this.label38.AutoSize = true;
+            this.label38.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label38.Location = new System.Drawing.Point(109, 90);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(43, 19);
+            this.label38.TabIndex = 14;
+            this.label38.Text = "Age:";
+            // 
+            // label39
+            // 
+            this.label39.AutoSize = true;
+            this.label39.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label39.Location = new System.Drawing.Point(95, 60);
+            this.label39.Name = "label39";
+            this.label39.Size = new System.Drawing.Size(57, 19);
+            this.label39.TabIndex = 3;
+            this.label39.Text = "Name:";
             // 
             // GM_View
             // 
@@ -956,7 +1211,7 @@
             this.panel1.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            this.tabControl1.ResumeLayout(false);
+            this.tabRecomonded.ResumeLayout(false);
             this.tabStaff.ResumeLayout(false);
             this.pnlStaff.ResumeLayout(false);
             this.pnlStaff.PerformLayout();
@@ -966,6 +1221,8 @@
             this.tabMenu.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
+            this.tabRecomondation.ResumeLayout(false);
+            this.tabRecomondation.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -985,11 +1242,11 @@
         private System.Windows.Forms.ToolStripMenuItem filesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem staffToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem menuToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem applicantsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem recomondationToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem orderSummeryToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem lossProfitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem managersToolStripMenuItem;
-        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabControl tabRecomonded;
         private System.Windows.Forms.TabPage tabStaff;
         private System.Windows.Forms.TabPage tabManager;
         private System.Windows.Forms.TabPage tabMenu;
@@ -1052,5 +1309,29 @@
         private System.Windows.Forms.TabPage tabOrder;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.RichTextBox rtxtAddress;
+        private System.Windows.Forms.TextBox txtReducation;
+        private System.Windows.Forms.TextBox txtRage;
+        private System.Windows.Forms.TextBox txtRecommendationDate;
+        private System.Windows.Forms.TextBox txtRecommendedBy;
+        private System.Windows.Forms.TextBox txtApplicationDate;
+        private System.Windows.Forms.TextBox txtAppliedCatagory;
+        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.TextBox txtRname;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.Label label33;
+        private System.Windows.Forms.Label label34;
+        private System.Windows.Forms.Label label35;
+        private System.Windows.Forms.Label label36;
+        private System.Windows.Forms.Label label37;
+        private System.Windows.Forms.Label label38;
+        private System.Windows.Forms.Label label39;
     }
 }
