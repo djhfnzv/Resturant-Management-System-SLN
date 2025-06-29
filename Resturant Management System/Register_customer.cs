@@ -51,14 +51,14 @@ namespace Resturant_Management_System
 
             try
             {
-                con = new SqlConnection(@"Data Source=PREDATOR-ASIF;Initial Catalog=Resturant Management System;Integrated Security=True;TrustServerCertificate=True");
-                con.Open();
 
                 string query = "INSERT INTO Customer_Information (Name, Gender, [Date of Birth], [Mobile Number],H_Address, Email,Pass_word)" +
                     "VALUES ('"+name+ "','"+gender+"','"+dob+"','"+phone+ "','"+address+ "','"+email+"','"+password+"')";
 
-                SqlCommand cmd = new SqlCommand(query, con);
-                cmd.ExecuteNonQuery();
+                if (DataAccess.ExecuteQuery(query)==true) 
+                {
+                    MessageBox.Show("Operation Executed");
+                }
 
                 MessageBox.Show("Resistered, thank you for signing up "+name, "Welcome");
 
@@ -67,13 +67,7 @@ namespace Resturant_Management_System
             {
                 MessageBox.Show("An error occurred while connecting to the database.\n\n" + ex.Message, "Error");
             }
-            finally
-            {
-                if (con != null && con.State == ConnectionState.Open)
-                {
-                    con.Close();
-                }
-            }
+            
         }
 
         private void btnShowHide_Click(object sender, EventArgs e)

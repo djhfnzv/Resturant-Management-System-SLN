@@ -24,43 +24,39 @@ namespace Resturant_Management_System
 
             try
             {
-                con = new SqlConnection(@"Data Source=PREDATOR-ASIF;Initial Catalog=Resturant Management System;Integrated Security=True;TrustServerCertificate=True");
-                con.Open();
+                string email = txtEmail.Text;
+                string password = txtiPassword.Text;
 
-                string query = "SELECT * FROM Customer_Information WHERE Email = @Email AND Pass_word = @Password";
-                SqlCommand cmd = new SqlCommand(query, con);
-                cmd.Parameters.AddWithValue("@Email", txtEmail.Text);
-                cmd.Parameters.AddWithValue("@Password", txtiPassword.Text);
+                if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
+                {
+                    MessageBox.Show("Please enter both Email and Password.", "Validation Error");
+                    return;
+                }
 
-                SqlDataReader reader = cmd.ExecuteReader();
+                string query = $"SELECT * FROM Customer_Information WHERE Email = '{email}' AND Pass_word = '{password}'";
 
-                if (reader.HasRows)
+                var data = DataAccess.GetData(query);
+
+
+                if (data != null && data.Rows.Count > 0)
                 {
                     // Login successful
-                    MessageBox.Show("Login Successful", "Welcome");
-                    this.Hide(); // Hide login form
-                    Customer_View_Menu h = new Customer_View_Menu();
-                    h.Show();
+                    MessageBox.Show("Login Successful!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    // You can pass user info here if needed
+                    Customer_View_Menu dashboard = new Customer_View_Menu(); // You must have this form
+                    dashboard.Show();
+                    this.Hide();
                 }
                 else
                 {
                     // Login failed
-                    MessageBox.Show("Incorrect email or password", "Login Failed");
-                    txtEmail.Clear();
-                    txtiPassword.Clear();
-                    txtEmail.Focus(); // Optionally set focus back to email input
+                    MessageBox.Show("Invalid email or password. Please try again.", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show("An error occurred while connecting to the database.\n\n" + ex.Message, "Error");
-            }
-            finally
-            {
-                if (con != null && con.State == ConnectionState.Open)
-                {
-                    con.Close();
-                }
             }
 
 

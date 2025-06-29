@@ -32,6 +32,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnLogin = new System.Windows.Forms.Button();
             this.btnRegister = new System.Windows.Forms.Button();
+            this.btnGM = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -53,11 +54,19 @@
             this.btnRegister.UseVisualStyleBackColor = true;
             this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
             // 
+            // btnGM
+            // 
+            resources.ApplyResources(this.btnGM, "btnGM");
+            this.btnGM.Name = "btnGM";
+            this.btnGM.UseVisualStyleBackColor = true;
+            this.btnGM.Click += new System.EventHandler(this.btnEdit_Click);
+            // 
             // Home
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.Controls.Add(this.btnGM);
             this.Controls.Add(this.btnRegister);
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.label1);
@@ -74,6 +83,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.Button btnRegister;
+        private System.Windows.Forms.Button btnGM;
     }
 }
 

@@ -31,6 +31,13 @@ namespace Resturant_Management_System
             Login_Cstomer h = new Login_Cstomer();
             h.Show();
         }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            this.Hide(); // hides the current form
+            GM_View h = new GM_View();
+            h.Show();
+        }
     }
 }
 
