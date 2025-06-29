@@ -70,6 +70,20 @@ namespace Resturant_Management_System
             txtIname.ReadOnly = x;
             txtFCatagory.ReadOnly = x;
             txtPrice.ReadOnly = x;
+            
+            txtRname.ReadOnly = x;
+            txtReducation.ReadOnly = x;
+            txtRaddress.ReadOnly = x;
+            txtRemail.ReadOnly = x;
+            txtRphone.ReadOnly = x;
+            txtRdob.ReadOnly = x;
+            txtRappliedcatagory.ReadOnly = x;
+            txtRapplicationdata.ReadOnly = x;
+            txtRrecommendedby.ReadOnly = x;
+            txtRrecmmendationdate.ReadOnly = x;
+                
+
+            
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
@@ -145,6 +159,16 @@ namespace Resturant_Management_System
             else if (table == "Manager") 
             {
                 txtRname;
+                txtReducation;
+                txtRaddress;
+                txtRemail;
+                txtRphone;
+                txtRdob;
+                txtRappliedcatagory;
+                txtRapplicationdata;
+                txtRrecommendedby;
+                txtRrecmmendationdate;
+                
             }
         }
 
