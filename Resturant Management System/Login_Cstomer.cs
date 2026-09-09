@@ -11,6 +11,10 @@ using System.Windows.Forms;
 
 namespace Resturant_Management_System
 {
+    public static class Session
+    {
+        public static string CustomerName { get; set; }
+    }
     public partial class Login_Cstomer: Form
     {
         public Login_Cstomer()
@@ -20,37 +24,36 @@ namespace Resturant_Management_System
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            SqlConnection con = null;
+            
 
             try
             {
-                string email = txtEmail.Text;
+                string name = txtName.Text;
                 string password = txtiPassword.Text;
 
-                if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
+                if (string.IsNullOrEmpty(name) || string.IsNullOrEmpty(password))
                 {
-                    MessageBox.Show("Please enter both Email and Password.", "Validation Error");
+                    MessageBox.Show("Please enter both Name and Password.", "Validation Error");
                     return;
                 }
 
-                string query = $"SELECT * FROM Customer_Information WHERE Email = '{email}' AND Pass_word = '{password}'";
+                string query = $"SELECT * FROM Customer_Information WHERE Name = '{name}' AND Pass_word = '{password}'";
 
                 var data = DataAccess.GetData(query);
 
 
                 if (data != null && data.Rows.Count > 0)
                 {
-                    // Login successful
+                    Session.CustomerName = name;
                     MessageBox.Show("Login Successful!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    // You can pass user info here if needed
-                    Customer_View_Menu dashboard = new Customer_View_Menu(); // You must have this form
-                    dashboard.Show();
+
+                    Customer_View_Menu menu = new Customer_View_Menu();
+                    menu.Show();
                     this.Hide();
                 }
                 else
                 {
-                    // Login failed
                     MessageBox.Show("Invalid email or password. Please try again.", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
@@ -58,8 +61,6 @@ namespace Resturant_Management_System
             {
                 MessageBox.Show("An error occurred while connecting to the database.\n\n" + ex.Message, "Error");
             }
-
-
         }
     }
 }

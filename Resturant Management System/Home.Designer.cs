@@ -32,12 +32,15 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnLogin = new System.Windows.Forms.Button();
             this.btnRegister = new System.Windows.Forms.Button();
-            this.btnGM = new System.Windows.Forms.Button();
+            this.btnAdinStaffLogin = new System.Windows.Forms.Button();
+            this.btnApply = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
             // 
             resources.ApplyResources(this.label1, "label1");
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.ForeColor = System.Drawing.Color.Beige;
             this.label1.Name = "label1";
             // 
             // btnLogin
@@ -54,19 +57,27 @@
             this.btnRegister.UseVisualStyleBackColor = true;
             this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
             // 
-            // btnGM
+            // btnAdinStaffLogin
             // 
-            resources.ApplyResources(this.btnGM, "btnGM");
-            this.btnGM.Name = "btnGM";
-            this.btnGM.UseVisualStyleBackColor = true;
-            this.btnGM.Click += new System.EventHandler(this.btnEdit_Click);
+            resources.ApplyResources(this.btnAdinStaffLogin, "btnAdinStaffLogin");
+            this.btnAdinStaffLogin.Name = "btnAdinStaffLogin";
+            this.btnAdinStaffLogin.UseVisualStyleBackColor = true;
+            this.btnAdinStaffLogin.Click += new System.EventHandler(this.btnAdinStaffLogin_Click);
+            // 
+            // btnApply
+            // 
+            resources.ApplyResources(this.btnApply, "btnApply");
+            this.btnApply.Name = "btnApply";
+            this.btnApply.UseVisualStyleBackColor = true;
+            this.btnApply.Click += new System.EventHandler(this.btnApply_Click);
             // 
             // Home
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.Controls.Add(this.btnGM);
+            this.Controls.Add(this.btnApply);
+            this.Controls.Add(this.btnAdinStaffLogin);
             this.Controls.Add(this.btnRegister);
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.label1);
@@ -83,7 +94,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.Button btnRegister;
-        private System.Windows.Forms.Button btnGM;
+        private System.Windows.Forms.Button btnAdinStaffLogin;
+        private System.Windows.Forms.Button btnApply;
     }
 }
 

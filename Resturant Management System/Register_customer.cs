@@ -35,7 +35,7 @@ namespace Resturant_Management_System
                 MessageBox.Show("Password and Confirm Password do not match.", "Registration Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtPassword.Clear();
                 txtiPassword.Focus();
-                return; // Stop further execution
+                return; 
             }
             else
             {
@@ -43,7 +43,7 @@ namespace Resturant_Management_System
                     string.IsNullOrWhiteSpace(phone) || string.IsNullOrWhiteSpace(address))
                 {
                     MessageBox.Show("Please fill in all fields.", "Registration Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return; // Stop further execution
+                    return; 
                 }
             }
 
@@ -72,8 +72,17 @@ namespace Resturant_Management_System
 
         private void btnShowHide_Click(object sender, EventArgs e)
         {
-            this.txtPassword.PasswordChar = this.txtPassword.PasswordChar == '\0' ? '*' : '\0';
-            this.txtiPassword.PasswordChar = this.txtPassword.PasswordChar == '\0' ? '*' : '\0';
+            bool isHidden = txtPassword.PasswordChar == '*';
+
+            txtPassword.PasswordChar = isHidden ? '\0' : '*';
+            txtiPassword.PasswordChar = isHidden ? '\0' : '*';
+        }
+
+        private void btnHome_Click(object sender, EventArgs e)
+        {
+            Home home = new Home();
+            this.Hide();  
+            home.Show();
         }
     }
 }

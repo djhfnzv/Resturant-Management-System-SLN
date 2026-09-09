@@ -49,6 +49,7 @@
             this.txtAddress = new System.Windows.Forms.TextBox();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnShowHide = new System.Windows.Forms.Button();
+            this.btnHome = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -232,13 +233,14 @@
             // 
             // btnSave
             // 
+            this.btnSave.BackColor = System.Drawing.Color.PaleGreen;
             this.btnSave.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.Location = new System.Drawing.Point(561, 538);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(91, 33);
             this.btnSave.TabIndex = 19;
             this.btnSave.Text = "Save";
-            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnShowHide
@@ -252,11 +254,24 @@
             this.btnShowHide.UseVisualStyleBackColor = true;
             this.btnShowHide.Click += new System.EventHandler(this.btnShowHide_Click);
             // 
+            // btnHome
+            // 
+            this.btnHome.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHome.Location = new System.Drawing.Point(1079, 12);
+            this.btnHome.Name = "btnHome";
+            this.btnHome.Size = new System.Drawing.Size(91, 33);
+            this.btnHome.TabIndex = 21;
+            this.btnHome.Text = "Home";
+            this.btnHome.UseVisualStyleBackColor = true;
+            this.btnHome.Click += new System.EventHandler(this.btnHome_Click);
+            // 
             // Register_customer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.MistyRose;
             this.ClientSize = new System.Drawing.Size(1182, 653);
+            this.Controls.Add(this.btnHome);
             this.Controls.Add(this.btnShowHide);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.txtAddress);
@@ -308,5 +323,6 @@
         private System.Windows.Forms.TextBox txtAddress;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnShowHide;
+        private System.Windows.Forms.Button btnHome;
     }
 }

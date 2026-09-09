@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AM_View.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AM_View.Designer.cs">
+      <DependentUpon>AM_View.cs</DependentUpon>
+    </Compile>
     <Compile Include="Customer_View_Menu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -53,17 +59,11 @@
       <DependentUpon>Customer_View_Menu.cs</DependentUpon>
     </Compile>
     <Compile Include="DataAccess.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="FM_View.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Form2.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form2.Designer.cs">
-      <DependentUpon>Form2.cs</DependentUpon>
+    <Compile Include="FM_View.Designer.cs">
+      <DependentUpon>FM_View.cs</DependentUpon>
     </Compile>
     <Compile Include="GM_View.cs">
       <SubType>Form</SubType>
@@ -77,9 +77,23 @@
     <Compile Include="Home.Designer.cs">
       <DependentUpon>Home.cs</DependentUpon>
     </Compile>
-    <Compile Include="Login_Cstomer.cs">
+    <Compile Include="JobApply.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="JobApply.Designer.cs">
+      <DependentUpon>JobApply.cs</DependentUpon>
+    </Compile>
+    <Compile Include="KM_View.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="KM_View.Designer.cs">
+      <DependentUpon>KM_View.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Login_admin&amp;staff.cs" />
+    <Compile Include="Login_admin&amp;staff.Designer.cs">
+      <DependentUpon>Login_admin&amp;staff.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Login_Cstomer.cs" />
     <Compile Include="Login_Cstomer.Designer.cs">
       <DependentUpon>Login_Cstomer.cs</DependentUpon>
     </Compile>
@@ -91,20 +105,30 @@
     <Compile Include="Register_customer.Designer.cs">
       <DependentUpon>Register_customer.cs</DependentUpon>
     </Compile>
+    <Compile Include="SessionManager.cs" />
+    <EmbeddedResource Include="AM_View.resx">
+      <DependentUpon>AM_View.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Customer_View_Menu.resx">
       <DependentUpon>Customer_View_Menu.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Form2.resx">
-      <DependentUpon>Form2.cs</DependentUpon>
+    <EmbeddedResource Include="FM_View.resx">
+      <DependentUpon>FM_View.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GM_View.resx">
       <DependentUpon>GM_View.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Home.resx">
       <DependentUpon>Home.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="JobApply.resx">
+      <DependentUpon>JobApply.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="KM_View.resx">
+      <DependentUpon>KM_View.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login_admin&amp;staff.resx">
+      <DependentUpon>Login_admin&amp;staff.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login_Cstomer.resx">
       <DependentUpon>Login_Cstomer.cs</DependentUpon>

@@ -32,10 +32,17 @@ namespace Resturant_Management_System
             h.Show();
         }
 
-        private void btnEdit_Click(object sender, EventArgs e)
+        private void btnApply_Click(object sender, EventArgs e)
         {
             this.Hide(); // hides the current form
-            GM_View h = new GM_View();
+            btnJobApply h = new btnJobApply();
+            h.Show();
+        }
+
+        private void btnAdinStaffLogin_Click(object sender, EventArgs e)
+        {
+            this.Hide(); // hides the current form
+            Login_admin_staff h = new Login_admin_staff();
             h.Show();
         }
     }

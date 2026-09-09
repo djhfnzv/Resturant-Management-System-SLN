@@ -45,7 +45,7 @@ namespace Resturant_Management_System
 
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = con;
-                cmd.CommandText = query;///select id, full name---> 2 col data only
+                cmd.CommandText = query;
 
                 SqlDataAdapter adp = new SqlDataAdapter(cmd);///convertion
                 DataSet ds = new DataSet();///sql data set

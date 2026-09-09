@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -13,11 +14,16 @@ namespace Resturant_Management_System
 {
     public partial class Customer_View_Menu : Form
     {
+        // At the top of your class (GM_View)
+        private decimal totalAmount = 0;
+        private string sessionCustomerName = "Mr/Ms Anonymous"; // default fallback
+        
+
 
         public Customer_View_Menu()
         {
             InitializeComponent();
-
+            this.btnLoad_Click(null, null);
 
         }
 
@@ -25,9 +31,6 @@ namespace Resturant_Management_System
         {
 
         }
-
-
-
         public string price;
         private string cmbOrderType;
         private ComboBox cmbPaymentMethod;
@@ -37,8 +40,8 @@ namespace Resturant_Management_System
             if (e.RowIndex >= 0)
             {
                 var row = dgvTable.Rows[e.RowIndex];
-                txtItemID.Text = row.Cells["item_id"].Value?.ToString();      // Use actual column name
-                txtItemName.Text = row.Cells["item_name"].Value?.ToString();  // Use actual column name
+                txtItemID.Text = row.Cells["Item ID"].Value?.ToString();      // Use actual column name
+                txtItemName.Text = row.Cells["Item Name"].Value?.ToString();  // Use actual column name
             }
         }
 
@@ -61,52 +64,118 @@ namespace Resturant_Management_System
             dgvTable.Refresh();
             dgvTable.ClearSelection();
         }
+        private void btnOrder_Click(object sender, EventArgs e)
+        {
+            var cartQuery = "SELECT * FROM Cart";
+            var cartData = DataAccess.GetData(cartQuery);
+
+            if (cartData == null || cartData.Rows.Count == 0)
+            {
+                MessageBox.Show("Cart is empty. Add items first.");
+                return;
+            }
+
+            string customerName = Session.CustomerName ?? "Mr/Ms Anonymous";
+
+            DateTime orderTime = DateTime.Now;
+            string orderType = "";
+            string paymentMethod = "";
+            decimal totalAmount = 0;
+
+            foreach (DataRow row in cartData.Rows)
+            {
+                string itemId = row["item_id"].ToString();
+                string itemName = row["item_name"].ToString();
+                int quantity = Convert.ToInt32(row["quantity"]);
+                decimal price = Convert.ToDecimal(row["price"]);
+                string type = row["seviceType"].ToString();
+                string payment = row["paymentTypr"].ToString();
+
+                totalAmount += price;
+
+                // Assign once (from the first row)
+                if (string.IsNullOrEmpty(orderType)) orderType = type;
+                if (string.IsNullOrEmpty(paymentMethod)) paymentMethod = payment;
+
+                string insertOrder = $@"
+                                        INSERT INTO Orders 
+                                        (order_datetime, customer_name, item_id, item_name, quantity, total_price, order_type, payment_method)
+                                        VALUES 
+                                        ('{orderTime}', '{customerName}', '{itemId}', '{itemName}', {quantity}, {price}, '{orderType}', '{paymentMethod}');
+                                      ";
+
+                DataAccess.ExecuteQuery(insertOrder);
+            }
+
+            MessageBox.Show("Order placed successfully!");
+
+            // Optionally clear cart
+            DataAccess.ExecuteQuery("DELETE FROM Cart;");
+            txtTotalAmount.Text = "0.00";
+        }
+        
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            Session.CustomerName = null;
+            this.Hide();
+            Login_Cstomer fm = new Login_Cstomer();
+            fm.Show();
+        }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(txtItemID.Text) ||
+        string.IsNullOrWhiteSpace(txtItemName.Text) ||
+        string.IsNullOrWhiteSpace(txtQuantity.Text) ||
+        cmbService.SelectedItem == null ||
+        cmbPayment.SelectedItem == null)
+            {
+                MessageBox.Show("Please fill in all fields.");
+                return;
+            }
+
+            if (!int.TryParse(txtQuantity.Text, out int quantity) || quantity <= 0)
+            {
+                MessageBox.Show("Invalid quantity.");
+                return;
+            }
+
+            string itemId = txtItemID.Text;
+            string itemName = txtItemName.Text;
+            decimal qnt = quantity;
+            string serviceType = cmbService.SelectedItem.ToString();
+            string paymentMethod = cmbPayment.SelectedItem.ToString();
+            string customerName = Session.CustomerName ?? "Mr/Ms Anonymous";
+
+
+
+            // Fetch price from dgvTable
+            decimal price = 0;
+            foreach (DataGridViewRow row in dgvTable.Rows)
+            {
+                if (row.Cells["Item ID"].Value?.ToString() == itemId)
+                {
+                    price = Convert.ToDecimal(row.Cells["Item Price"].Value);
+                    break;
+                }
+            }
+
+            // Calculate total for this item and update overall total
+            decimal lineTotal = price * qnt;
+            totalAmount += lineTotal;
+            txtTotalAmount.Text = totalAmount.ToString("0.00");
+
+            // Prepare and execute query
+            string query = $@"
+        INSERT INTO Cart(item_id, item_name, quantity, price, seviceType, paymentTypr) 
+        VALUES ('{itemId}', '{itemName}', {qnt}, {lineTotal}, '{serviceType}', '{paymentMethod}');
+    ";
+
             try
             {
-                if (string.IsNullOrEmpty(txtItemID.Text) || string.IsNullOrEmpty(txtQuantity.Text))
-                {
-                    MessageBox.Show("Please select an item and enter quantity.");
-                    return;
-                }
-
-                var itemID = txtItemID.Text;
-                var itemName = txtItemName.Text;
-                var quantity = Convert.ToInt32(txtQuantity.Text);
-
-                // get price from Menu (correct column name!)
-                var priceQuery = $"SELECT price FROM Menu WHERE item_id = '{itemID}'";
-                var priceData = DataAccess.GetData(priceQuery);
-
-                if (priceData == null || priceData.Rows.Count == 0)
-                {
-                    MessageBox.Show("Item not found in Menu.");
-                    return;
-                }
-
-                var price = Convert.ToDecimal(priceData.Rows[0]["price"]);
-
-                // default customer name
-                var customerName = "Mr/Ms Anonymous";
-
-                // insert into cart
-                var query = $@"
-            INSERT INTO Cart (item_id, item_name, quantity, price, customer_name)
-            VALUES ('{itemID}', '{itemName}', {quantity}, {price}, '{customerName}')
-        ";
-
-                var result = DataAccess.ExecuteQuery(query);
-
-                if (result == true)
-                {
-                    MessageBox.Show("Item added to cart!");
-                }
-                else
-                {
-                    MessageBox.Show("Failed to add item to cart.");
-                }
+                DataAccess.ExecuteQuery(query);
+                MessageBox.Show("Item added to cart.");
             }
             catch (Exception ex)
             {
@@ -114,62 +183,12 @@ namespace Resturant_Management_System
             }
         }
 
-        private void btnOrder_Click(object sender, EventArgs e)
+        private void btnLogOut_Click(object sender, EventArgs e)
         {
-            try
-            {
-                // Ensure cmbOrderType and cmbPaymentMethod are ComboBox objects
-                if (cmbService is ComboBox orderTypeComboBox && cmbPayment is ComboBox paymentMethodComboBox)
-                {
-                    string orderType = orderTypeComboBox.SelectedItem?.ToString() ?? "Dine-in";
-                    string paymentMethod = paymentMethodComboBox.SelectedItem?.ToString() ?? "Cash";
-
-                    var cartQuery = "SELECT * FROM Cart";
-                    var cartData = DataAccess.GetData(cartQuery);
-
-                    if (cartData == null || cartData.Rows.Count == 0)
-                    {
-                        MessageBox.Show("Cart is empty!");
-                        return;
-                    }
-
-                    int insertedRows = 0;
-
-                    foreach (DataRow row in cartData.Rows)
-                    {
-                        var itemID = row["item_id"].ToString();
-                        var quantity = Convert.ToInt32(row["quantity"]);
-                        var customerName = row["customer_name"].ToString();
-                        var itemName = row["item_name"].ToString();
-
-                        var insertQuery = $@"
-                        INSERT INTO Orders (item_id, quantity, customer_name, order_type, payment_method, item_name)
-                        VALUES ('{itemID}', {quantity}, '{customerName}', '{orderType}', '{paymentMethod}', '{itemName}')
-                    ";
-
-                        var result = DataAccess.ExecuteQuery(insertQuery);
-
-                        if (result == true)
-                        {
-                            insertedRows++;
-                        }
-                    }
-
-                    // clear the cart
-                    var clearQuery = "DELETE FROM Cart";
-                    DataAccess.ExecuteQuery(clearQuery);
-
-                    MessageBox.Show($"{insertedRows} order(s) placed successfully!");
-                }
-                else
-                {
-                    MessageBox.Show("Order type or payment method selection is invalid.");
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error: " + ex.Message);
-            }
+            Session.CustomerName = null;
+            Home home = new Home();
+            this.Hide(); // hides the current form
+            home.Show();
         }
     }
 }
