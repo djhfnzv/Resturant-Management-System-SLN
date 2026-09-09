@@ -1,9 +1,9 @@
 # Restaurant Management System
 
-A C#/.NET desktop app for running restaurant operations — orders, tables, and data handled through a dedicated data-access layer.
+A C#/.NET desktop app for running restaurant operations - orders, tables, and data handled through a dedicated data-access layer.
 
 ## About the Project
-A C#/.NET desktop system for managing restaurant workflows — orders, tables, and records — through a clean data-access layer. Built to simplify day-to-day restaurant operations for staff and admins alike.
+A C#/.NET desktop system for managing restaurant workflows - orders, tables, and records — through a clean data-access layer. Built to simplify day-to-day restaurant operations for staff and admins alike.
 
 ## Tech Stack
 - C# (.NET, Visual Studio Solution)
